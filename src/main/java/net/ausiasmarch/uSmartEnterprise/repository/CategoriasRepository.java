@@ -1,5 +1,12 @@
 package net.ausiasmarch.uSmartEnterprise.repository;
 
-public class CategoriasRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import net.ausiasmarch.uSmartEnterprise.entity.CategoriasEntity;
+
+public interface CategoriasRepository extends JpaRepository<CategoriasEntity, Long> {
+
+    boolean existsByNombre(String nombre);
+
     
 }

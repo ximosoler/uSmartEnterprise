@@ -14,9 +14,9 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
-@Table(name = "developer")
+@Table(name = "usuarios")
 @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
-public class CategoriasEntity implements Serializable {
+public class EmpresaEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,15 +24,15 @@ public class CategoriasEntity implements Serializable {
 
     private String nombre;
 
-    @OneToMany(mappedBy = "categoria", fetch = FetchType.LAZY)
-    private final List<TareasEntity> tarea;
+    @OneToMany(mappedBy = "empresa", fetch = FetchType.LAZY)
+    private final List<TareasEntity> empresa;
 
-    public CategoriasEntity() {
-        this.tarea = new ArrayList<>();
+    public EmpresaEntity() {
+        this.empresa = new ArrayList<>();
     }
 
-    public CategoriasEntity(Long id) {
-        this.tarea = new ArrayList<>();
+    public EmpresaEntity(Long id) {
+        this.empresa = new ArrayList<>();
         this.id = id;
     }
 
@@ -50,10 +50,6 @@ public class CategoriasEntity implements Serializable {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    public int getTarea() {
-        return this.tarea.size();
     }
 
 }
