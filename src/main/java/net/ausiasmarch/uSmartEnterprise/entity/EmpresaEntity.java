@@ -1,4 +1,4 @@
-package net.ausiasmarch.uSmartEnterprise.entity;
+/* package net.ausiasmarch.uSmartEnterprise.entity;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -25,14 +25,14 @@ public class EmpresaEntity implements Serializable {
     private String nombre;
 
     @OneToMany(mappedBy = "empresa", fetch = FetchType.LAZY)
-    private final List<TareasEntity> empresa;
+    private final List<UsuariosEntity> usuarios;
 
     public EmpresaEntity() {
-        this.empresa = new ArrayList<>();
+        this.usuarios = new ArrayList<>();
     }
 
     public EmpresaEntity(Long id) {
-        this.empresa = new ArrayList<>();
+        this.usuarios = new ArrayList<>();
         this.id = id;
     }
 
@@ -53,3 +53,4 @@ public class EmpresaEntity implements Serializable {
     }
 
 }
+ */

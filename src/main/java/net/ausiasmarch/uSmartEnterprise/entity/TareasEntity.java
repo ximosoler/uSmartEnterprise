@@ -23,7 +23,7 @@ public class TareasEntity implements Serializable {
     private Long id;
 
     private Long idUsuario;
-    private Long idCategoria;
+
     private String nombre;
     private String descripcion;
 
@@ -45,14 +45,6 @@ public class TareasEntity implements Serializable {
 
     public void setIdUsuario(Long idUsuario) {
         this.idUsuario = idUsuario;
-    }
-
-    public Long getIdCategoria() {
-        return idCategoria;
-    }
-
-    public void setIdCategoria(Long idCategoria) {
-        this.idCategoria = idCategoria;
     }
 
     public String getNombre() {

@@ -4,10 +4,12 @@ import net.ausiasmarch.uSmartEnterprise.entity.CategoriasEntity;
 import net.ausiasmarch.uSmartEnterprise.exception.ResourceNotFoundException;
 import net.ausiasmarch.uSmartEnterprise.exception.ResourceNotModifiedException;
 import net.ausiasmarch.uSmartEnterprise.helper.ValidationHelper;
+import org.springframework.data.domain.Pageable;
 import net.ausiasmarch.uSmartEnterprise.repository.CategoriasRepository;
 
 import javax.validation.ValidationException;
 
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 
@@ -16,6 +18,11 @@ import org.springframework.stereotype.Service;
 public class CategoriasService {
 
     CategoriasRepository oCategoriasRepository;
+
+    public CategoriasService(CategoriasRepository oCategoriasRepository) {
+        this.oCategoriasRepository = oCategoriasRepository;
+    }
+
    
 
     public void validate(Long id) {
@@ -47,6 +54,27 @@ public class CategoriasService {
         //oAuthService.OnlyAdmins();
         return oCategoriasRepository.save(oCategoriasEntity).getId();
     }
+
+     public Page<CategoriasEntity> getPage(Pageable oPageable, String strFilter, Long lCategorias) {
+        Page<CategoriasEntity> oPage = null;
+        //if (oAuthService.isAdmin()) {
+            if (lCategorias != null) {
+                if (strFilter == null || strFilter.isEmpty() || strFilter.trim().isEmpty()) {
+                    return oCategoriasRepository.findByCategoriasId(lCategorias, oPageable);
+                } else {
+                    return oCategoriasRepository.findByCategoriasIdAndNombreContainingIgnoreCase(lCategorias, strFilter, oPageable);
+                }
+            } else {
+                if (strFilter == null || strFilter.isEmpty() || strFilter.trim().isEmpty()) {
+                    return oCategoriasRepository.findAll(oPageable);
+                } else {
+                    return oCategoriasRepository.findByNombreContainingIgnoreCase(strFilter, oPageable);
+                }
+            }
+        //} else {
+            //throw new UnauthorizedException("this request is only allowed to admin role");
+        //}
+    } 
 
     public Long create(CategoriasEntity oNewCategoriasEntity) {
         //oAuthService.OnlyAdmins();

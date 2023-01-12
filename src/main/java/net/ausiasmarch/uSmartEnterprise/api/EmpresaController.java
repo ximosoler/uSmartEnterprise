@@ -1,4 +1,4 @@
-package net.ausiasmarch.uSmartEnterprise.api;
+/* package net.ausiasmarch.uSmartEnterprise.api;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -52,3 +52,4 @@ public class EmpresaController {
     }
 
 }
+ */

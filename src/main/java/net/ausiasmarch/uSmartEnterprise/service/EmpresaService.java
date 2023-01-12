@@ -1,4 +1,4 @@
-package net.ausiasmarch.uSmartEnterprise.service;
+/* package net.ausiasmarch.uSmartEnterprise.service;
 
 import net.ausiasmarch.uSmartEnterprise.entity.EmpresaEntity;
 import net.ausiasmarch.uSmartEnterprise.exception.ResourceNotFoundException;
@@ -66,3 +66,4 @@ public class EmpresaService {
         }
     }  
 }
+ */
