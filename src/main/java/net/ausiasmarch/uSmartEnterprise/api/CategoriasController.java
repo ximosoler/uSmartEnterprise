@@ -46,8 +46,8 @@ public class CategoriasController {
     public ResponseEntity<Page<CategoriasEntity>> getPage(
             @ParameterObject @PageableDefault(page = 0, size = 10, direction = Sort.Direction.DESC) Pageable oPageable,
             @RequestParam(name = "filter", required = false) String strFilter,
-            @RequestParam(name = "project", required = false) Long lProject) {
-        return new ResponseEntity<Page<CategoriasEntity>>(oCategoriasService.getPage(oPageable, strFilter, lProject), HttpStatus.OK);
+            @RequestParam(name = "categorias", required = false) Long lCategorias) {
+        return new ResponseEntity<Page<CategoriasEntity>>(oCategoriasService.getPage(oPageable, strFilter, lCategorias), HttpStatus.OK);
     }
 
     @PutMapping("")
