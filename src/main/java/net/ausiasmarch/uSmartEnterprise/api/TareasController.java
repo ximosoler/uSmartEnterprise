@@ -16,7 +16,7 @@ import net.ausiasmarch.uSmartEnterprise.entity.TareasEntity;
 import net.ausiasmarch.uSmartEnterprise.service.TareasService;
 
 @RestController
-@RequestMapping("/task")
+@RequestMapping("/tareas")
 public class TareasController {
     
     @Autowired
@@ -36,13 +36,13 @@ public class TareasController {
     public ResponseEntity<Long> count(){
         return new ResponseEntity<Long>(oTareasService.count(), HttpStatus.OK);
     }
-  /*   @GetMapping("")
+ /*    @GetMapping("")
     public ResponseEntity<Page<TareasEntity>> getPage(
             @ParameterObject @PageableDefault(page = 0, size = 10, direction = Sort.Direction.DESC) Pageable oPageable,
             @RequestParam(name = "filter", required = false) String strFilter,
             @RequestParam(name = "project", required = false) Long lProject) {
         return new ResponseEntity<Page<CategoriasEntity>>(oCategoriasService.getPage(oPageable, strFilter, lProject), HttpStatus.OK);
-    } */
+    }  */
 
     @PutMapping
     public ResponseEntity<Long> update(@RequestBody TareasEntity oTareasEntity){

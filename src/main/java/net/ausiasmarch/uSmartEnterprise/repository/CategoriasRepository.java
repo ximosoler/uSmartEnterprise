@@ -10,11 +10,6 @@ public interface CategoriasRepository extends JpaRepository<CategoriasEntity, Lo
 
     boolean existsByNombre(String nombre);
     Page<CategoriasEntity> findAll(Pageable oPageable);
-    Page<CategoriasEntity> findByCategoriasId (Long lCategorias, Pageable oPageable);
-    Page<CategoriasEntity> findByCategoriasIdAndNombreContainingIgnoreCase (Long lCategorias, String strFilter, Pageable oPageable);
-    Page<CategoriasEntity> findByNombreContainingIgnoreCase(String strFilter, Pageable oPageable);
-
-   
- 
-    
+    Page<CategoriasEntity> findByNombre(Long lCategorias, Pageable oPageable);
+  
 }

@@ -1,4 +1,4 @@
-/* package net.ausiasmarch.uSmartEnterprise.api;
+package net.ausiasmarch.uSmartEnterprise.api;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,15 +16,11 @@ import net.ausiasmarch.uSmartEnterprise.entity.EmpresaEntity;
 import net.ausiasmarch.uSmartEnterprise.service.EmpresaService;
 
 @RestController
-@RequestMapping("/categorias")
+@RequestMapping("/empresa")
 public class EmpresaController {
     
-    private final EmpresaService oEmpresaService;
-
     @Autowired
-    public EmpresaController(EmpresaService oEmpresaService) {
-            this.oEmpresaService = oEmpresaService;
-    }
+   EmpresaService oEmpresaService;
 
     @GetMapping("/{id}")
     public ResponseEntity<EmpresaEntity> get(@PathVariable(value="id")Long id) {
@@ -52,4 +48,3 @@ public class EmpresaController {
     }
 
 }
- */

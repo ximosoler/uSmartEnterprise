@@ -1,4 +1,4 @@
-/* package net.ausiasmarch.uSmartEnterprise.entity;
+ package net.ausiasmarch.uSmartEnterprise.entity;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -8,6 +8,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -27,6 +29,7 @@ public class EmpresaEntity implements Serializable {
     @OneToMany(mappedBy = "empresa", fetch = FetchType.LAZY)
     private final List<UsuariosEntity> usuarios;
 
+    
     public EmpresaEntity() {
         this.usuarios = new ArrayList<>();
     }
@@ -53,4 +56,4 @@ public class EmpresaEntity implements Serializable {
     }
 
 }
- */
+ 

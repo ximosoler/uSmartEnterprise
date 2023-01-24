@@ -1,4 +1,4 @@
-/* package net.ausiasmarch.uSmartEnterprise.repository;
+package net.ausiasmarch.uSmartEnterprise.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -10,4 +10,3 @@ public interface EmpresaRepository extends JpaRepository<EmpresaEntity, Long> {
     boolean existsByNombre(String nombre);
     
 }
- */

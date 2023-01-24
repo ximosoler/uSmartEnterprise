@@ -16,21 +16,17 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
+import org.springframework.web.bind.annotation.RequestBody;
 import net.ausiasmarch.uSmartEnterprise.entity.CategoriasEntity;
 import net.ausiasmarch.uSmartEnterprise.service.CategoriasService;
 
 @RestController
 @RequestMapping("/categorias")
+
 public class CategoriasController {
-    
-    private final CategoriasService oCategoriasService;
 
     @Autowired
-    public CategoriasController(CategoriasService oCategoriasService) {
-            this.oCategoriasService = oCategoriasService;
-    }
+    CategoriasService oCategoriasService;
 
     @GetMapping("/{id}")
     public ResponseEntity<CategoriasEntity> get(@PathVariable(value="id") Long id) {
@@ -48,9 +44,10 @@ public class CategoriasController {
             @RequestParam(name = "filter", required = false) String strFilter,
             @RequestParam(name = "categorias", required = false) Long lCategorias) {
         return new ResponseEntity<Page<CategoriasEntity>>(oCategoriasService.getPage(oPageable, strFilter, lCategorias), HttpStatus.OK);
-    }
+    } 
 
-    @PutMapping("")
+
+    @PutMapping("/{id}")
     public ResponseEntity<Long> update(@RequestBody CategoriasEntity oCategoriasEntity) {
         return new ResponseEntity<Long>(oCategoriasService.update(oCategoriasEntity), HttpStatus.OK);
     }
@@ -65,4 +62,12 @@ public class CategoriasController {
         return new ResponseEntity<Long>(oCategoriasService.delete(id), HttpStatus.OK);
     }
 
+    @PostMapping("/generate")
+    public ResponseEntity<CategoriasEntity> generate() {
+        return new ResponseEntity<CategoriasEntity>(oCategoriasService.generate(), HttpStatus.OK);
+    }
+    @PostMapping("/generate/{amount}")
+    public ResponseEntity<Long> generateSome(@PathVariable(value = "amount") Integer amount) {
+        return new ResponseEntity<>(oCategoriasService.generateSome(amount), HttpStatus.OK);
+    }
 }
