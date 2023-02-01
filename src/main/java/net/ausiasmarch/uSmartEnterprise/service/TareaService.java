@@ -1,5 +1,6 @@
 package net.ausiasmarch.uSmartEnterprise.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import net.ausiasmarch.uSmartEnterprise.entity.TareaEntity;
@@ -12,6 +13,8 @@ import net.ausiasmarch.uSmartEnterprise.repository.TareaRepository;
 
 @Service
 public class TareaService {
+
+    @Autowired
     TareaRepository oTareaRepository;
    
 
