@@ -83,11 +83,11 @@ public class UsuarioService {
     }
 
 
-    public Long create(UsuarioEntity oNewUsuariosEntity) {
+    public Long create(UsuarioEntity oNewUsuarioEntity) {
 /*         oAuthService.OnlyAdmins();*/
         //validate(oNewUsuariosEntity);
-        oNewUsuariosEntity.setId(0L);
-        return oUsuarioRepository.save(oNewUsuariosEntity).getId();
+        oNewUsuarioEntity.setId(0L);
+        return oUsuarioRepository.save(oNewUsuarioEntity).getId();
     }
 
     public Long delete(Long id) {
@@ -138,7 +138,7 @@ public class UsuarioService {
         int randomTeamId = RandomHelper.getRandomInt(1, totalTeams.size()-1);
         EmpresaEntity oEmpresaEntity = totalTeams.get(randomTeamId);
         oUsuariosEntity.setEmpresa(oEmpresaEntity);
-
+        
         return oUsuariosEntity;
     }
 
