@@ -24,7 +24,7 @@ public class EmpresaController {
 
     @GetMapping("/{id}")
     public ResponseEntity<EmpresaEntity> get(@PathVariable(value="id")Long id) {
-        return new ResponseEntity<>(oEmpresaService.get(id), HttpStatus.OK);
+        return new ResponseEntity<EmpresaEntity>(oEmpresaService.get(id), HttpStatus.OK);
     }
 
     @GetMapping("/count")

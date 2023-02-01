@@ -37,16 +37,16 @@ public class UsuarioController {
     public ResponseEntity<Long> count() {
         return new ResponseEntity<Long>(oUsuarioService.count(), HttpStatus.OK);
     }
-/*
-    @GetMapping("")
+
+    /* @GetMapping("")
     public ResponseEntity<Page<UsuarioEntity>> getPage(
             @ParameterObject @PageableDefault(page = 0, size = 10, direction = Sort.Direction.DESC) Pageable oPageable,
             @RequestParam(name = "filter", required = false) String strFilter,
             @RequestParam(value = "empresa", required = false) Long idEmpresa,
             @RequestParam(value = "tipodecuenta", required = false) Long idTiposdecuenta) {
         return new ResponseEntity<Page<UsuarioEntity>>(oUsuarioService.getPage(oPageable, strFilter, idEmpresa, idTiposdecuenta), HttpStatus.OK);
-    }
-*/
+    } */
+
     @PostMapping("/")
     public ResponseEntity<Long> create(@RequestBody UsuarioEntity oNewUsuariosEntity) {
         return new ResponseEntity<Long>(oUsuarioService.create(oNewUsuariosEntity), HttpStatus.OK);

@@ -25,15 +25,15 @@ public class EmpresaEntity implements Serializable {
     private String nombre;
 
     @OneToMany(mappedBy = "empresa", fetch = FetchType.LAZY)
-    private final List<UsuarioEntity> usuarios;
+    private final List<UsuarioEntity> usuario;
 
     
     public EmpresaEntity() {
-        this.usuarios = new ArrayList<>();
+        this.usuario = new ArrayList<>();
     }
 
     public EmpresaEntity(Long id) {
-        this.usuarios = new ArrayList<>();
+        this.usuario = new ArrayList<>();
         this.id = id;
     }
 

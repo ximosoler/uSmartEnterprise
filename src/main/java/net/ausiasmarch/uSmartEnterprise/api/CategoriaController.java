@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 
 @RestController
-@RequestMapping("/categorias")
+@RequestMapping("/categoria")
 
 public class CategoriaController {
 

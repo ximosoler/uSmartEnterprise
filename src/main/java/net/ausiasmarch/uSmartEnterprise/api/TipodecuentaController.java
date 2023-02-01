@@ -22,7 +22,7 @@ import net.ausiasmarch.uSmartEnterprise.entity.TipodecuentaEntity;
 import net.ausiasmarch.uSmartEnterprise.service.TipodecuentaService;
 
 @RestController
-@RequestMapping("/tipodeCuenta")
+@RequestMapping("/tipodecuenta")
 public class TipodecuentaController {
 
     @Autowired

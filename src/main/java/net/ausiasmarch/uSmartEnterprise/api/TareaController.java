@@ -16,7 +16,7 @@ import net.ausiasmarch.uSmartEnterprise.entity.TareaEntity;
 import net.ausiasmarch.uSmartEnterprise.service.TareaService;
 
 @RestController
-@RequestMapping("/tareas")
+@RequestMapping("/tarea")
 public class TareaController {
     
     @Autowired
