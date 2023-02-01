@@ -3,7 +3,6 @@ package net.ausiasmarch.uSmartEnterprise.entity;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -19,9 +18,9 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
 @Entity
-@Table(name = "usuarios")
+@Table(name = "usuario")
 @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
-public class UsuariosEntity implements Serializable {
+public class UsuarioEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,24 +30,23 @@ public class UsuariosEntity implements Serializable {
     private String email;
     private String empleo;
 
-
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "idEmpresa")
+    @JoinColumn(name = "id_empresa")
     private EmpresaEntity empresa;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "idTipodecuenta")
-    private TipodeCuentaEntity tipodeCuenta;
+    @JoinColumn(name = "id_tipodecuenta")
+    private TipodecuentaEntity tipodecuenta;
 
-    @OneToMany(mappedBy = "usuarios", fetch = FetchType.LAZY)
-    private final List<TareasEntity> tarea; 
+    @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY)
+    private final List<TareaEntity> tareas; 
  
-    public UsuariosEntity() {
-        this.tarea = new ArrayList<>();
+    public UsuarioEntity() {
+        this.tareas = new ArrayList<>();
     }
 
-    public UsuariosEntity(Long id) {
-        this.tarea = new ArrayList<>();
+    public UsuarioEntity(Long id) {
+        this.tareas = new ArrayList<>();
         this.id = id;
     } 
 
@@ -67,7 +65,6 @@ public class UsuariosEntity implements Serializable {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-
 
     public String getApellidos() {
         return apellidos;
@@ -101,21 +98,20 @@ public class UsuariosEntity implements Serializable {
         this.empresa = empresa;
     }
 
-    public void setTipodeCuenta(TipodeCuentaEntity tipodeCuenta) {
-        this.tipodeCuenta = tipodeCuenta;
+    public void setTipodecuenta(TipodecuentaEntity tipodeCuenta) {
+        this.tipodecuenta = tipodeCuenta;
     }
 
-
     public int getTarea() {
-        return tarea.size();
+        return tareas.size();
+    }
+
+    public TipodecuentaEntity getTipodecuenta() {
+        return tipodecuenta;
     }
 
     @PreRemove
     public void nullify() {
-        this.tarea.forEach(c -> c.setIdUsuario(null));
-    }
-
-    public TipodeCuentaEntity getTipodeCuenta() {
-        return tipodeCuenta;
+        this.tareas.forEach(c -> c.setIdUsuario(null));
     }
 }

@@ -32,6 +32,8 @@
  */
 package net.ausiasmarch.uSmartEnterprise.helper;
 
+
+
 import java.security.SecureRandom;
 import java.time.LocalDateTime;
 import java.util.Date;
@@ -39,6 +41,7 @@ import java.util.GregorianCalendar;
 import java.util.Random;
 import java.time.ZoneId;
 import java.util.concurrent.ThreadLocalRandom;
+
 
 public class RandomHelper {
 

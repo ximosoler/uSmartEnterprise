@@ -1,6 +1,5 @@
 package net.ausiasmarch.uSmartEnterprise.entity;
 
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -11,31 +10,35 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.PreRemove;
 import javax.persistence.Table;
-
-
 
 @Entity
 @Table(name = "tipodecuenta")
 @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
-public class TipodeCuentaEntity implements Serializable {
+public class TipodecuentaEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nombre;
 
-  @OneToMany(mappedBy = "tipodecuenta", fetch = FetchType.LAZY)
-    private final List<UsuariosEntity> usuarios;
+    @OneToMany(mappedBy = "tipodecuenta", fetch = FetchType.LAZY)
+    private final List<UsuarioEntity> usuarios;
 
-
-    public TipodeCuentaEntity() {
+    public TipodecuentaEntity() {
         this.usuarios = new ArrayList<>();
     }
 
-    public TipodeCuentaEntity(Long id) {
+    public TipodecuentaEntity(Long id) {
+        this.usuarios = new ArrayList<>();
+        this.id = id;        
+    }
+
+    public TipodecuentaEntity(Long id, String nombre) {
         this.usuarios = new ArrayList<>();
         this.id = id;
+        this.nombre = nombre;
     }
 
     public Long getId() {
@@ -58,6 +61,9 @@ public class TipodeCuentaEntity implements Serializable {
         return usuarios.size();
     }
 
-    
+    @PreRemove
+    public void nullify() {
+        this.usuarios.forEach(c -> c.setTipodecuenta(null));
+    }
 
 }

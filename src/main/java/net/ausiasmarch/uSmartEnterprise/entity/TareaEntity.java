@@ -16,9 +16,9 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
-@Table(name = "tareas")
+@Table(name = "tarea")
 @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
-public class TareasEntity implements Serializable {
+public class TareaEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,13 +28,21 @@ public class TareasEntity implements Serializable {
     private String descripcion;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "idCategoria")
-    private CategoriasEntity categorias;
+    @JoinColumn(name = "id_categoria")
+    private CategoriaEntity categoria;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "idUsuario")
-    private UsuariosEntity usuarios;
+    @JoinColumn(name = "id_usuario")
+    private UsuarioEntity usuario;
   
+    public TareaEntity() {
+    }
+
+    
+    public TareaEntity(Long id) {
+        this.id = id;
+    }
+
 
     public Long getId() {
         return id;
@@ -44,12 +52,8 @@ public class TareasEntity implements Serializable {
         this.id = id;
     }
 
-    public UsuariosEntity getIdUsuario() {
-        return usuarios;
-    }
-
-    public void setIdUsuario(UsuariosEntity usuarios) {
-        this.usuarios = usuarios;
+    public void setIdUsuario(UsuarioEntity usuario) {
+        this.usuario = usuario;
     }
 
     public String getNombre() {
@@ -68,12 +72,12 @@ public class TareasEntity implements Serializable {
         this.descripcion = descripcion;
     }
 
-    public CategoriasEntity getCategorias() {
-        return categorias;
+    public CategoriaEntity getCategoria() {
+        return categoria;
     }
 
-    public void setCategorias(CategoriasEntity categorias) {
-        this.categorias = categorias;
+    public void setCategoria(CategoriaEntity categoria) {
+        this.categoria = categoria;
     }
 
 }

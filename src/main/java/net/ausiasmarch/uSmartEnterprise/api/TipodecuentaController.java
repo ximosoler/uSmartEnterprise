@@ -18,24 +18,24 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import net.ausiasmarch.uSmartEnterprise.entity.TipodeCuentaEntity;
-import net.ausiasmarch.uSmartEnterprise.service.TipodeCuentaService;
+import net.ausiasmarch.uSmartEnterprise.entity.TipodecuentaEntity;
+import net.ausiasmarch.uSmartEnterprise.service.TipodecuentaService;
 
 @RestController
 @RequestMapping("/tipodeCuenta")
-public class TipodeCuentaController {
+public class TipodecuentaController {
 
     @Autowired
-    TipodeCuentaService oTipodeCuentaService;
+    TipodecuentaService oTipodeCuentaService;
 
     @GetMapping("/{id}")
-    public ResponseEntity<TipodeCuentaEntity> get(@PathVariable(value = "id") Long id) {
-        return new ResponseEntity<TipodeCuentaEntity>(oTipodeCuentaService.get(id), HttpStatus.OK);
+    public ResponseEntity<TipodecuentaEntity> get(@PathVariable(value = "id") Long id) {
+        return new ResponseEntity<TipodecuentaEntity>(oTipodeCuentaService.get(id), HttpStatus.OK);
     }
 
     @GetMapping("/all")
-    public ResponseEntity<List<TipodeCuentaEntity>> all() {
-        return new ResponseEntity<List<TipodeCuentaEntity>>(oTipodeCuentaService.all(), HttpStatus.OK);
+    public ResponseEntity<List<TipodecuentaEntity>> all() {
+        return new ResponseEntity<List<TipodecuentaEntity>>(oTipodeCuentaService.all(), HttpStatus.OK);
     }
 
     @GetMapping("/count")
@@ -44,14 +44,14 @@ public class TipodeCuentaController {
     }
 
     @GetMapping("")
-    public ResponseEntity<Page<TipodeCuentaEntity>> getPage(
+    public ResponseEntity<Page<TipodecuentaEntity>> getPage(
             @ParameterObject @PageableDefault(page = 0, size = 10, direction = Sort.Direction.DESC) Pageable oPageable,
             @RequestParam(name = "filter", required = false) String strFilter) {
-        return new ResponseEntity<Page<TipodeCuentaEntity>>(oTipodeCuentaService.getPage(oPageable, strFilter), HttpStatus.OK);
+        return new ResponseEntity<Page<TipodecuentaEntity>>(oTipodeCuentaService.getPage(oPageable, strFilter), HttpStatus.OK);
     }
 
     @PutMapping("")
-    public ResponseEntity<Long> update(@RequestBody TipodeCuentaEntity oTipodeCuentaEntity) {
+    public ResponseEntity<Long> update(@RequestBody TipodecuentaEntity oTipodeCuentaEntity) {
         return new ResponseEntity<Long>(oTipodeCuentaService.update(oTipodeCuentaEntity), HttpStatus.OK);
     }
 

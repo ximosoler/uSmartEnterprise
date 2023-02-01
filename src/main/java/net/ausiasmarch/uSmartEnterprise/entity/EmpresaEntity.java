@@ -8,15 +8,13 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
-@Table(name = "usuarios")
+@Table(name = "empresa")
 @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 public class EmpresaEntity implements Serializable {
 
@@ -27,7 +25,7 @@ public class EmpresaEntity implements Serializable {
     private String nombre;
 
     @OneToMany(mappedBy = "empresa", fetch = FetchType.LAZY)
-    private final List<UsuariosEntity> usuarios;
+    private final List<UsuarioEntity> usuarios;
 
     
     public EmpresaEntity() {

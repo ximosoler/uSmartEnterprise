@@ -12,19 +12,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
-import net.ausiasmarch.uSmartEnterprise.entity.TareasEntity;
-import net.ausiasmarch.uSmartEnterprise.service.TareasService;
+import net.ausiasmarch.uSmartEnterprise.entity.TareaEntity;
+import net.ausiasmarch.uSmartEnterprise.service.TareaService;
 
 @RestController
 @RequestMapping("/tareas")
-public class TareasController {
+public class TareaController {
     
     @Autowired
-    TareasService oTareasService;
+    TareaService oTareasService;
 
     @GetMapping("/{id}")
-    public ResponseEntity<TareasEntity> get(@PathVariable(value = "id") Long id){
-        return new ResponseEntity<TareasEntity>(oTareasService.get(id), HttpStatus.OK);
+    public ResponseEntity<TareaEntity> get(@PathVariable(value = "id") Long id){
+        return new ResponseEntity<TareaEntity>(oTareasService.get(id), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
@@ -45,12 +45,12 @@ public class TareasController {
     }  */
 
     @PutMapping
-    public ResponseEntity<Long> update(@RequestBody TareasEntity oTareasEntity){
+    public ResponseEntity<Long> update(@RequestBody TareaEntity oTareasEntity){
         return new ResponseEntity<>(oTareasService.update(oTareasEntity), HttpStatus.OK);
     }
 
     @PostMapping("/")
-    public ResponseEntity<Long> create(@RequestBody TareasEntity oNewTareasEntity){
+    public ResponseEntity<Long> create(@RequestBody TareaEntity oNewTareasEntity){
         return new ResponseEntity<Long>(oTareasService.create(oNewTareasEntity), HttpStatus.OK);
     }
 }
